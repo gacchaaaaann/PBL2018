@@ -24,6 +24,25 @@ public class ObjGlobe extends ModelSpaceObject {
 
     }
 
+    ObjGlobe(){
+
+        int size = data.ver.size();
+        double[] da = new double[]{};
+
+        for (int i = 0; i < size; i++) {
+            da = data.ver.get(i).array();
+
+            da[0] -= 13.5;
+            da[1] -= 8.0;
+            da[2] -= 17.0;
+
+            data.ver.remove(i);
+            data.ver.add(i, DoubleBuffer.wrap(da));
+
+        }
+
+    }
+
 
     /**
      * 各面の辺を描画する
