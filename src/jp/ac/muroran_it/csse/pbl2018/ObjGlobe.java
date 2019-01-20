@@ -32,9 +32,9 @@ public class ObjGlobe extends ModelSpaceObject {
         for (int i = 0; i < size; i++) {
             da = data.ver.get(i).array();
 
-            da[0] -= 13.5;
-            da[1] -= 8.0;
-            da[2] -= 17.0;
+            da[0] = (da[0]-13.5)/6;
+            da[1] = (da[1]-8.0)/6;
+            da[2] = (da[2]-17.0)/6;
 
             data.ver.remove(i);
             data.ver.add(i, DoubleBuffer.wrap(da));
