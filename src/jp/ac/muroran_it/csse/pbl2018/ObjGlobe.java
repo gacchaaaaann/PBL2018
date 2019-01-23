@@ -2,7 +2,6 @@ package jp.ac.muroran_it.csse.pbl2018;
 
 import javax.media.opengl.GL;
 
-import com.sun.opengl.util.GLUT;
 import jp.ac.muroran_it.csse.vr_skelton.ModelSpaceObject;
 
 import java.nio.DoubleBuffer;
@@ -34,13 +33,13 @@ public class ObjGlobe extends ModelSpaceObject {
     ObjGlobe(){
 
         int size = data.ver.size();
-        double[] da = new double[]{};
+        double[] da;
 
         for (int i = 0; i < size; i++) {
             da = data.ver.get(i).array();
 
-            da[0] = (da[0]-13.5)/6;
-            da[1] = (da[1]-23.5+15.0)/6;
+            da[0] = (da[0]-13.5+2)/6;
+            da[1] = (da[1]-23.5+15.1)/6;
             da[2] = (da[2]-17.0+40.0)/6;
 
             data.ver.remove(i);
@@ -103,15 +102,13 @@ public class ObjGlobe extends ModelSpaceObject {
         if ( face.isEmpty() )   throw new Exception("face_data is empty;");
 
 //        折れ線の反射特性を緑に設定
-        float[] ambientDiffuseOfLine = new float[] {0.0f, 1.0f, 0.0f, 0.5f};
-        float[] ambientDiffuseOfBack = new float[]{0.2f, 0.2f, 0.2f, 1.0f};
-        gl.glMaterialfv(GL.GL_FRONT, GL.GL_AMBIENT_AND_DIFFUSE, ambientDiffuseOfLine, 0);
-        gl.glMaterialfv(GL.GL_BACK, GL.GL_AMBIENT_AND_DIFFUSE, ambientDiffuseOfBack, 0);
+        float[] ambientDiffuseOfLine = new float[] {0.0f, 1.0f, 0.0f, 1.0f};
+        gl.glMaterialfv(GL.GL_FRONT_AND_BACK, GL.GL_AMBIENT_AND_DIFFUSE, ambientDiffuseOfLine, 0);
 
 //        現在のモデルビュー行列を保存
         gl.glPushMatrix();
 
-//        地球儀のGLの座標系の原点を指定しないといけないかもしれない(何も指定しないと(0,0,0)ぽいですね)
+//        地球儀のGLの座標系の原点を指定しないといけないかもしれない？(何も指定しないと(0,0,0)ぽいですね)
 //        gl.glTranslated();
 
 //        ここから描画フェイズ
@@ -128,11 +125,6 @@ public class ObjGlobe extends ModelSpaceObject {
 
         }
 
-
-        float[] ambientDiffuseOfSphere = new float[] { 0.0f, 0.0f, 1.0f, 0.5f };
-        gl.glMaterialfv(GL.GL_FRONT, GL.GL_AMBIENT_AND_DIFFUSE, ambientDiffuseOfSphere, 0);
-
-//        new GLUT().glutSolidSphere( 10.0, 10, 10 );
 
 //        保存したモデルビュー行列を復帰
         gl.glPopMatrix();

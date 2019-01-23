@@ -59,7 +59,7 @@ public class OpenDataVRSpaceState extends VRSpaceState {
           objects.add(glb);
 
           sphere = new ObjSphere();
-//          objects.add(sphere);
+          objects.add(sphere);
 
           axis = new ObjAxis();
           objects.add(axis);
