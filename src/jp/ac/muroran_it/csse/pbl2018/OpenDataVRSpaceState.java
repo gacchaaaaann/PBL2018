@@ -31,7 +31,15 @@ public class OpenDataVRSpaceState extends VRSpaceState {
 
     /** 地球儀 */
     private ObjGlobe glb;
-    
+
+    /** 球 */
+    private ObjSphere sphere;
+
+    /** 軸 */
+    private ObjAxis axis;
+
+
+
     /**
      * コンストラクタ
      * @param name アプリケーション名
@@ -49,6 +57,12 @@ public class OpenDataVRSpaceState extends VRSpaceState {
 
           glb = new ObjGlobe();
           objects.add(glb);
+
+          sphere = new ObjSphere();
+//          objects.add(sphere);
+
+          axis = new ObjAxis();
+          objects.add(axis);
 
         //▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
     }
